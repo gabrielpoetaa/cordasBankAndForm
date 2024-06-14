@@ -2,7 +2,7 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
 const CpfInput: React.FC = () => {
-  const { register, setValue, formState: { errors } } = useFormContext();
+  const { register, formState: { errors } } = useFormContext();
 
   // Extrair a mensagem de erro corretamente
   const getErrorMessage = (error: any): string | null => {
