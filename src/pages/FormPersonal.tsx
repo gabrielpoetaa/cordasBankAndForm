@@ -97,19 +97,22 @@ export function FormPersonal() {
   };
 
   return (
+
     <FormProvider {...methods}>
-          <main className=" bg-zinc-50 flex items-center justify-center">
+      <main >
+        <div className="min-h-screen flex items-center justify-center">
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full max-w-lg">
             <NameInput />
             <EmailInput />
             <TelefoneInput onCountryChange={handleCountryChange} />
             <CpfInput />
             <EnderecoForm handleCepBlur={handleCepBlur} />
-            <button type="submit" className="bg-emerald-500 rounded font-semibold text-white h-10 hover:bg-emerald-600">
+            <button type="submit" className="bg-goldCordas_300 rounded font-semibold text-white h-10 hover:bg-goldCordas_200">
               Salvar
             </button>
           </form>
-        </main>
+        </div>
+      </main>
     </FormProvider>
   );
 }

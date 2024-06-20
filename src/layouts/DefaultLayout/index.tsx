@@ -1,11 +1,13 @@
 import { Outlet } from "react-router-dom";
-import { Header } from "../../components/Header";
+import { Sidebar } from "../../components/Sidebar/index";
 
 export function DefaultLayout() {
   return (
-    <div>
-      <Header />
-      <Outlet />
+    <div className="min-h-screen grid grid-cols-app ">
+      <Sidebar />
+      <div className="px-4 pb-12 pt-8">
+        <Outlet />
+      </div>
     </div>
   )
 }
