@@ -1,16 +1,16 @@
-import '../styles/global.css'
-import { useForm, FormProvider } from 'react-hook-form'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect, useState } from 'react'
+import '../styles/global.css';
+import { useForm, FormProvider } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect, useState } from 'react';
 
 import NameInput from '../components/Form/PersonalInfo/NameInput';
 import EmailInput from '../components/Form/PersonalInfo/EmailInput';
 import TelefoneInput from '../components/Form/PersonalInfo/TelefoneInput/TelefoneInput';
 import EnderecoForm from '../components/Form/PersonalInfo/EnderecoForm';
+import CpfInput from '../components/Form/PersonalInfo/CpfInput';
 
-import phoneCodes from '../components/Form/PersonalInfo/TelefoneInput/phoneCodes.json'
-import CpfInput from '../components/Form/PersonalInfo/CpfInput'
+import phoneCodes from '../components/Form/PersonalInfo/TelefoneInput/phoneCodes.json';
 
 const createUserFormSchema = z.object({
   name: z.string().nonempty('O nome é obrigatório').transform(name => {
@@ -33,11 +33,11 @@ const createUserFormSchema = z.object({
   }),
 });
 
-type CreateUserFormData = z.infer<typeof createUserFormSchema>
+type CreateUserFormData = z.infer<typeof createUserFormSchema>;
 
 export function FormPersonal() {
   const methods = useForm<CreateUserFormData>({
-    resolver: zodResolver(createUserFormSchema)
+    resolver: zodResolver(createUserFormSchema),
   });
 
   const { handleSubmit, formState: { errors }, setValue, setError } = methods;
@@ -49,7 +49,7 @@ export function FormPersonal() {
     const formattedCountries = phoneCodes.map(country => ({
       name: country.name,
       dial: country.dial,
-      code: country.code
+      code: country.code,
     }));
     setCountries(formattedCountries);
   }, []);
@@ -59,9 +59,9 @@ export function FormPersonal() {
   };
 
   const onSubmit = (data: CreateUserFormData) => {
-    const fullPhoneNumber = `${selectedCountry.dial}${data.telefone.replace(/\D/g, '')}`; // Remove caracteres não numéricos do telefone
+    const fullPhoneNumber = `${selectedCountry.dial}${data.telefone.replace(/\D/g, '')}`;
     data.telefone = fullPhoneNumber;
-    data.cpf = data.cpf.replace(/\D/g, ''); // Remove todos os caracteres não numéricos do CPF
+    data.cpf = data.cpf.replace(/\D/g, '');
     console.log(data);
   };
 
@@ -97,10 +97,9 @@ export function FormPersonal() {
   };
 
   return (
-
     <FormProvider {...methods}>
-      <main >
-        <div className="min-h-screen flex items-center justify-center">
+      <main>
+        <div className="mt-6 flex items-center w-full flex-col gap-5">
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full max-w-lg">
             <NameInput />
             <EmailInput />

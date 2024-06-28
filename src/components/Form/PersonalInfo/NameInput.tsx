@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
+import * as Input from '../../../components/input'
 
 const NameInput: React.FC = () => {
   const { register, formState: { errors } } = useFormContext();

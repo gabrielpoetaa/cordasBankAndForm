@@ -1,5 +1,9 @@
+
+
 export function FormCourses() {
-  return
+  return (
+    <h1>Form Courses</h1>
+  )
 }
 
 export default FormCourses;
