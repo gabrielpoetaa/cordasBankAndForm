@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
-import * as Input from '../../../components/input'
+import { InputRoot, InputControl, InputPrefix } from '../../input';
 
 const NameInput: React.FC = () => {
   const { register, formState: { errors } } = useFormContext();
@@ -14,14 +14,19 @@ const NameInput: React.FC = () => {
 
   return (
     <div className="flex flex-col gap-1">
-      <label htmlFor="name">Nome</label>
-      <input
+    <label htmlFor="name">Nome</label>
+    <InputRoot>
+      <InputPrefix>
+        {/* Adicione qualquer prefixo de input aqui, se necessário */}
+      </InputPrefix>
+      <InputControl
         type="text"
-        className="border border-zinc-200 shadow-sm rounded h-10 px-3"
+        id="name"
         {...register('name')}
       />
-      {errors.name && <span>{getErrorMessage(errors.name)}</span>}
-    </div>
+    </InputRoot>
+    {errors.name && <span>{getErrorMessage(errors.name)}</span>}
+  </div>
   );
 };
 

@@ -4,13 +4,14 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useState } from 'react';
 
-import NameInput from '../components/Form/PersonalInfo/NameInput';
+import { InputRoot, InputControl, InputPrefix } from '../components/input';
 import EmailInput from '../components/Form/PersonalInfo/EmailInput';
 import TelefoneInput from '../components/Form/PersonalInfo/TelefoneInput/TelefoneInput';
 import EnderecoForm from '../components/Form/PersonalInfo/EnderecoForm';
 import CpfInput from '../components/Form/PersonalInfo/CpfInput';
 
 import phoneCodes from '../components/Form/PersonalInfo/TelefoneInput/phoneCodes.json';
+import NameInput from '../components/Form/PersonalInfo/NameInput';
 
 const createUserFormSchema = z.object({
   name: z.string().nonempty('O nome é obrigatório').transform(name => {
@@ -40,9 +41,8 @@ export function FormPersonal() {
     resolver: zodResolver(createUserFormSchema),
   });
 
-  const { handleSubmit, formState: { errors }, setValue, setError } = methods;
+  const { handleSubmit, formState: { errors }, register, setValue, setError } = methods;
   const [countries, setCountries] = useState<Country[]>([]);
-  const [loading, setLoading] = useState(true);
   const [selectedCountry, setSelectedCountry] = useState({ dial: '+55', code: 'BR' });
 
   useEffect(() => {
@@ -94,6 +94,12 @@ export function FormPersonal() {
         message: 'Formato de CEP inválido',
       });
     }
+  };
+
+  const getErrorMessage = (error: any): string | null => {
+    if (!error) return null;
+    if (typeof error.message === 'string') return error.message;
+    return 'Erro inválido';
   };
 
   return (
