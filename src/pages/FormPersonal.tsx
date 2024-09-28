@@ -105,7 +105,7 @@ export function FormPersonal() {
   return (
     <FormProvider {...methods}>
       <main>
-        <div className="mt-6 flex items-center w-full flex-col gap-5">
+        <div className="mt-6 flex items-center w-full flex-col gap-5 font-semibold text-zinc-700">
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full max-w-lg">
             <NameInput />
             <EmailInput />
