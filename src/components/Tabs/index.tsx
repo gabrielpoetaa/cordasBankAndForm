@@ -1,8 +1,8 @@
 import * as Tabs from '@radix-ui/react-tabs'
 import { TabItem } from './TabItem'
 import { useState } from 'react'
-import FormPersonal from '../../pages/FormPersonal'
-import FormCourses from '../../pages/FormCourses'
+import { FirstPageForm } from '../Form/FirstPageForm'
+import FormCourses from '../Form/SecondPage'
 
 export function TabsRadix() {
 
@@ -15,7 +15,7 @@ export function TabsRadix() {
         <TabItem value="tab2" title="Cursos escolhidos" isSelected={currentTab == 'tab2'} />
       </Tabs.List>
       <Tabs.Content value="tab1">
-        <FormPersonal />
+        <FirstPageForm />
       </Tabs.Content>
       <Tabs.Content value="tab2">
         <FormCourses />
