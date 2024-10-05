@@ -17,7 +17,7 @@ object({
     }).join(' ');
   }),
   email: z.string().nonempty('Email obrigatório').email('Formato de e-mail inválido'),
-  telefone: z.string().transform(value => value.replace(/\D/g, '')),
+  telefone: z.string().min(8).transform(value => value.replace(/\D/g, '')),
   cpf: z.string().nonempty('CPF é obrigatório'),
   Endereco: z.object({
     cep: z.string().min(8, 'O CEP deve ter oito dígitos'),

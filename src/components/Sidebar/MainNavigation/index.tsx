@@ -4,12 +4,12 @@ import { NavItem } from "./NavItem";
 export function MainNavigation () {
   return (
     <nav className="space-y-2">
-     <NavItem title="Home" icon={Home} />
-     <NavItem title="Dashboard" icon={BarChart} />
-     <NavItem title="Projects" icon={SquareStack} />
-     <NavItem title="Tasks" icon={CheckSquare} />
-     <NavItem title="Reporting" icon={Flag} />
-     <NavItem title="Users" icon={Users} />
+     <NavItem title="Home" icon={Home} to="/" />
+     <NavItem title="Cadastrar" icon={BarChart} to="/Cadastrar" />
+     <NavItem title="Projects" icon={SquareStack} to="/" />
+     <NavItem title="Tasks" icon={CheckSquare} to="/" />
+     <NavItem title="Reporting" icon={Flag} to="/" />
+     <NavItem title="Users" icon={Users} to="/" />
     </nav>
   )
 } 

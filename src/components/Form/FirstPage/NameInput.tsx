@@ -1,9 +1,8 @@
-import { Controller, useFormContext } from 'react-hook-form';
-import TextField from '@mui/material/TextField';
-// import { InputRoot, InputControl, InputPrefix } from '../../input';
+
+import { useFormContext } from 'react-hook-form';
 
 export const NameInput = () => {
-  const {  control  } = useFormContext();
+  const { register, formState: { errors } } = useFormContext();
 
   // Extrair a mensagem de erro corretamente
   const getErrorMessage = (error: any): string | null => {
@@ -14,18 +13,15 @@ export const NameInput = () => {
 
   return (
     <div className="flex flex-col gap-1">
-    {/* <label htmlFor="name">Nome</label> */}
-    <Controller
-      name="name" // type
-      control={control}
-      render={({ field, fieldState }) => 
-      <TextField 
-      label="Nome" 
-      error={Boolean(fieldState.error)} 
-      {...field} 
-      />}
+      <label htmlFor="name">Nome</label>
+      <input
+        type="name"
+        className="border border-zinc-200 shadow-sm rounded h-10 px-3"
+        {...register('name')}
       />
-    {/* {errors.name && <span>{getErrorMessage(errors.name)}</span>} */}
-  </div>
+      {errors.name && <span>{getErrorMessage(errors.name)}</span>}
+    </div>
   );
 };
+
+export default NameInput;
