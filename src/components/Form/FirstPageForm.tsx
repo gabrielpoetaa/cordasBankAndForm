@@ -43,7 +43,7 @@ const [Country, setCountry] = useState<Country[]>([]);
 
   return (
       <main>
-        <div className="mt-6 flex items-center w-full flex-col gap-5 font-medium text-zinc-700">
+        <div className="mt-12 flex items-center w-full flex-col gap-5 font-medium text-zinc-700">
           {/* <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full max-w-lg"> */}
           <div className="flex flex-col gap-4 w-full max-w-lg">
             <NameInput />

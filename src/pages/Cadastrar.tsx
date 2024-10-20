@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import {FirstPageForm} from "../components/Form/FirstPageForm";
+import SecondPage from "../components/Form/SecondPage.tsx";
 
 
 const createUserFormSchema = z.
@@ -41,7 +42,7 @@ const sourceSteps = [
   },
   {
     label: "Dados de Endereço",
-    Component: <p>Passo 2</p>,
+    Component: <SecondPage/>,
     hasError: false,
   },
   {
@@ -80,7 +81,7 @@ export function Cadastrar() {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit((data) => console.log(data))}>
+      <form onSubmit={methods.handleSubmit((data) => console.log(data))} >
         <Steps items={sourceSteps} />
       </form>
     </FormProvider>
